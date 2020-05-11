@@ -53,3 +53,33 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
+
+@app.route("/account",methods=['GET', 'POST'])
+@login_required
+def account():
+    form=UpdateAccountForm()
+    if form.validate_on_submit():
+        current_user.username=form.username.data
+        current_user.email=form.email.data
+        db.session.commit()
+        flash('your account is updated','primary')
+        return redirect(url_for('account'))
+    elif request.method =='GET':
+        form.username.data==current_user.username
+        form.email.data==current_user.email
+    return render_template('account.html', title='Account',form=form)
+
+@app.route("/post/new", methods=['GET', 'POST'])
+@login_required
+def new_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post has been created!', 'success')
+        return redirect(url_for('home'))
+    return render_template('create_blog.html', title='New Post',
+                        form=form, legend='New Post')
+
+
