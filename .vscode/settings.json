@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "blogenv/bin/python"
+    "python.pythonPath": "blogenv/bin/python",
+    "python.linting.enabled": false
 }
