@@ -1,0 +1,31 @@
+{% extends "design.html" %}
+{% block content %}
+<style>
+    body{
+    background-image: url('https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+    background-size: cover;
+    opacity:1.0;
+    }
+</style>
+<div class="container quotes">
+        <h1 class="text-center">The Blog Abroad</h1>
+    <div class="m-5">
+        <blockquote class="quote-box text-center primary-color">
+            <p class="quotation-mark">
+                "
+            </p>
+            <p class="quote-text">
+                {{quote.quote}}
+            </p>
+            <hr />
+            <div class="blog-post-actions">
+                <p class="blog-post-bottom pull-left">
+                    {{quote.author}}
+                </p>
+            </div>
+        </blockquote>
+    </div>
+<div class="">
+
+
+{% endblock content %}
